@@ -1,0 +1,13 @@
+# binaries
+bin/
+*.exe
+*.out
+
+# OS
+.DS_Store
+
+# logs
+*.log
+
+# testdata generated files
+testdata/app.log
