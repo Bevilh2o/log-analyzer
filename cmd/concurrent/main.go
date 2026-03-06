@@ -8,6 +8,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"runtime/pprof"
 )
 
 type Stats struct {
@@ -43,6 +44,13 @@ func worker(lines <-chan string, stats *Stats, wg *sync.WaitGroup) {
 }
 
 func main() {
+	f, err := os.Create("cpu.prof")
+	if err != nil {
+	    panic(err)
+	}
+	pprof.StartCPUProfile(f)
+	defer pprof.StopCPUProfile()
+
 	start := time.Now()
 
 	file, err := os.Open("testdata/app.log")
