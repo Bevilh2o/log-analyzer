@@ -56,8 +56,8 @@ Processes the log file sequentially, line by line.
 
 ### Concurrent Version
 
-Uses a worker pool with goroutines and channels to process log lines in
-parallel.\
+Uses a worker pool with goroutines and channels to process log lines concurrently, allowing parallel execution when multiple CPU cores are available.
+
 A mutex ensures thread-safe aggregation of results.
 
 To simulate a CPU-bound workload, each log line is hashed multiple times
